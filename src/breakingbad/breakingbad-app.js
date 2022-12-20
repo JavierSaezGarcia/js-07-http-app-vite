@@ -12,8 +12,6 @@ const fetchQuote = async() => {
     return data[0];
 }
 
-
-
 /**
  * 
  * @param { HTMLDivElement } element 
