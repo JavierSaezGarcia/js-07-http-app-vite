@@ -34,15 +34,20 @@ export const renderModal = ( element, callback ) => {
             const formData = new FormData( form );
             const userLike = { ...loadedUser };
 
-            for( const [key, value] of formData){
+            for( const [key ,value] of formData){
+                console.log(key,value);
+                if( key === 'isActive'){           
+                   
+                    userLike[key] = (value === 'on') ? true : false;                
+                    
+                    continue;
+                }
                 if( key === 'balance'){
                     userLike[key] = +value;
                     continue;
                 }
-                if( key === 'isActive'){
-                    userLike[key] = ( value === 'on') ? true : false;
-                    continue;
-                }
+                
+                //alert(key)
 
                 userLike[key] = value;
                 
@@ -80,7 +85,7 @@ const setFormValues = ( user ) => {
     form.querySelector('[name="firstName"]').value = user.firstName;
     form.querySelector('[name="lastName"]').value = user.lastName;
     form.querySelector('[name="balance"]').value = user.balance;
-    form.querySelector('[name="isActive"]').checked = user.isActive;
+    form.querySelector('[name="isActive"]').value = user.isActive;
     loadedUser = user;
 
 
